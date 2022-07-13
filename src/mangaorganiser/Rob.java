@@ -17,6 +17,7 @@ import java.util.LinkedList;
  */
 public class Rob extends Robot{
     private static int BEGIN = 0x24;
+    private static int DELAY = 1000;
     
     public Rob() throws AWTException{
         super();
@@ -43,7 +44,7 @@ public class Rob extends Robot{
     public void launch(int chapB, int chapE, boolean rename){
         super.mouseMove(1200, 150);
         mouseClick(MouseEvent.BUTTON1_DOWN_MASK);
-        super.delay(750);
+        super.delay(DELAY);
         action(chapB, rename);
         int nbChap = chapE-chapB;
         chapB++;
@@ -58,14 +59,14 @@ public class Rob extends Robot{
     
     private void action(int chapB, boolean rename){
         keyType(KeyEvent.VK_ENTER);
-        super.delay(750);
+        super.delay(DELAY);
         keysType(KeyEvent.VK_CONTROL, KeyEvent.VK_A); 
         if(rename)rename(chapB);
         keysType(KeyEvent.VK_CONTROL, KeyEvent.VK_X);
         keyType(KeyEvent.VK_BACK_SPACE);
-        super.delay(750);
+        super.delay(DELAY);
         keysType(KeyEvent.VK_CONTROL, KeyEvent.VK_V);
-        super.delay(750);
+        super.delay(DELAY);
         keyType(BEGIN);
     }
     
@@ -75,7 +76,7 @@ public class Rob extends Robot{
         keyType(KeyEvent.VK_F2);
         separateNumber(chap);
         keyType(KeyEvent.VK_ENTER);
-        super.delay(750);
+        super.delay(DELAY);
     }
     
     public void separateNumber(int number){
